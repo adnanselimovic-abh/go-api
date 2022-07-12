@@ -54,9 +54,10 @@ func healthz(c *gin.Context) {
 func main() {
 	router := gin.Default()
 
+	router.GET("/healthz", healthz)
+
 	router.GET("/user/:id", getUserById)
 	router.POST("/addUser", addUser)
-	router.POST("/healthz", healthz)
 
 	router.Run(":8080")
 }
