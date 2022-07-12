@@ -12,6 +12,10 @@ type User struct {
 	name   string `json:"ip,omitempty"`
 }
 
+type Health struct {
+	msg string `json:"ip,omitempty"`
+}
+
 var users = []User{}
 
 func getUserById(c *gin.Context) {
@@ -40,11 +44,19 @@ func addUser(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, users)
 }
 
+func healthz(c *gin.Context) {
+	var health Health
+	health.msg = "I'm fine."
+
+	c.IndentedJSON(http.StatusOK, health)
+}
+
 func main() {
 	router := gin.Default()
 
 	router.GET("/user/:id", getUserById)
 	router.POST("/addUser", addUser)
+	router.POST("/healthz", healthz)
 
 	router.Run(":8080")
 }
