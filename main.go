@@ -8,12 +8,12 @@ import (
 )
 
 type User struct {
-	UserId string `json:"clientId,omitempty"`
-	name   string `json:"ip,omitempty"`
+	UserId string `json:"userId,omitempty"`
+	name   string `json:"name,omitempty"`
 }
 
 type Health struct {
-	msg string `json:"ip,omitempty"`
+	msg string `json:"msg,omitempty"`
 }
 
 var users = []User{}
