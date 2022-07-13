@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -46,7 +47,8 @@ func addUser(c *gin.Context) {
 
 func healthz(c *gin.Context) {
 	var health Health
-	health.msg = "I'm fine."
+	jsonString := `{"msg":"I am healthy!"}`
+	json.Unmarshal([]byte(jsonString), &health)
 
 	c.IndentedJSON(http.StatusOK, health)
 }
