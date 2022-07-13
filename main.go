@@ -14,7 +14,7 @@ type User struct {
 }
 
 type Health struct {
-	msg string `json:"msg,omitempty"`
+	Msg string `json:"msg,omitempty"`
 }
 
 var users = []User{}
